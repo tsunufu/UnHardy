@@ -10,4 +10,5 @@ import RealmSwift
 
 class Add: Object {
     @objc dynamic var image: String = ""
+    @objc dynamic var goal: String = ""
 }
