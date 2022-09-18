@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class UserInfoViewController: UIViewController {
 
@@ -15,6 +16,15 @@ class UserInfoViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //ナビゲーションバー非表示
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        
+    }
+    
     
 
     /*
