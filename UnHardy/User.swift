@@ -11,5 +11,6 @@ import RealmSwift
 class User: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var icon: String = ""
+    @objc dynamic var goal: String = ""
     
 }

@@ -7,12 +7,19 @@
 
 import UIKit
 import SwiftUI
+import RealmSwift
 
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var goalTextField: UITextField!
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         
         // Do any additional setup after loading the view.
     }
@@ -23,6 +30,34 @@ class UserInfoViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         
+    }
+    
+    @IBAction func save() {
+        let user = User()
+        user.name = self.nameTextField.text!
+        user.goal = self.goalTextField.text!
+        
+        try! realm.write {
+            realm.add(user)
+        }
+        
+        nameTextField.text = ""
+        goalTextField.text = ""
+    }
+    
+    @IBAction func set() {
+        //カメラロールを使えるかの確認
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
+            //カメラロールの画像を選択して画像を表示するまでの一環の流れ
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            
+            picker.allowsEditing = true
+            
+            present(picker, animated: true, completion: nil)
+        }
     }
     
     
