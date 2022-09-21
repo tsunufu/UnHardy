@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,29 @@ class MainTabBarController: UITabBarController {
     }
     //プラスボタン押された時
     @objc func didTapPlus() {
+        //カメラが使えるかのかくにん
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+            //カメラを起動
+            
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            
+            picker.allowsEditing = true
+            
+            present(picker, animated: true, completion: nil)
+        } else {
+            //使えない場合はコンソールにエラーを出力
+            print("error")
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+
+        
+        dismiss(animated: true, completion: nil)
     }
     
 

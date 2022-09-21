@@ -26,7 +26,9 @@ class TimeLineViewController: UIViewController {
   
     }
     
-  
+    @IBAction func photo() {
+        MainTabBarController().didTapPlus()
+    }
     
 
     /*
