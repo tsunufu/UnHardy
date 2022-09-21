@@ -7,14 +7,17 @@
 
 import UIKit
 
-class TimeLineViewController: UIViewController {
+class TimeLineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
     
+    @IBOutlet var table: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        table.dataSource = self
+        table.delegate = self
    
         // Do any additional setup after loading the view.
         
@@ -26,9 +29,23 @@ class TimeLineViewController: UIViewController {
   
     }
     
-    @IBAction func photo() {
-        MainTabBarController().didTapPlus()
+//    @IBAction func photo() {
+//        MainTabBarController().didTapPlus()
+//    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return 400
+     }
     
 
     /*
