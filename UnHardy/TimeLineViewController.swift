@@ -47,6 +47,23 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
          return 400
      }
     
+    @IBAction func share() {
+        //シェアするテキストを作成
+        let text = "〇〇日継続🔥"
+        let hashTag = "#目標"
+        let advTag = "#UnHardy"
+        let completedText = text + "\n" + hashTag + "\n" + advTag
+
+        //作成したテキストをエンコード
+        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        //エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+        if let encodedText = encodedText,
+            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
