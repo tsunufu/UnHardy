@@ -21,6 +21,9 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        nameTextField.placeholder = "名前"
+        goalTextField.placeholder = "目標"
+        
         nameTextField.delegate = self
         goalTextField.delegate = self
         
