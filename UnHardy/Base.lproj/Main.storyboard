@@ -59,7 +59,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="save" destination="BYZ-38-t0r" eventType="touchUpInside" id="nHK-7z-goa"/>
-                                            <segue destination="jzH-fK-5Iz" kind="show" id="TOl-5u-dBL"/>
+                                            <segue destination="jzH-fK-5Iz" kind="show" id="nwb-kR-BOE"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-hQ-muS">
@@ -184,7 +184,7 @@
         <!--Profile View Controller-->
         <scene sceneID="JTI-Sr-9Eq">
             <objects>
-                <viewController id="NEq-zC-4Kn" customClass="ProfileViewController" customModule="UnHardy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="NEq-zC-4Kn" customClass="ProfileViewController" customModule="UnHardy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JOD-ec-lK3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,7 +243,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="JJ7-cG-4ig">
             <objects>
-                <tabBarController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="jzH-fK-5Iz" customClass="MainTabBarController" customModule="UnHardy" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="jzH-fK-5Iz" customClass="MainTabBarController" customModule="UnHardy" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="yYO-rF-6cj">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="7x6-99-W0j"/>
                     </navigationItem>

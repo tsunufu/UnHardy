@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate,
         navigationItem.rightBarButtonItem = plusBarButtonItem
         //アイコンの色変更
         plusBarButtonItem.tintColor = UIColor.black
+        
 
         // Do any additional setup after loading the view.
     }
@@ -40,6 +42,7 @@ class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate,
 
         //ナビゲーションバー再表示
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
     }
     //プラスボタン押された時
     @objc func didTapPlus() {

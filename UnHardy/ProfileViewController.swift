@@ -15,15 +15,23 @@ class ProfileViewController: UIViewController {
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
     @IBOutlet var goalText: UILabel!
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let userData = realm.objects(User.self)
         print("全てのデータ\(userData)")
+        //URL型にキャスト
+        let fileURL = URL(string: userData[24].icon)
+        //パス型に変換
+        let filePath = fileURL?.path
         
-        userName.text = userData[0].name
-        goalText.text = userData[0].goal
+        userName.text = userData[24].name
+        goalText.text = userData[24].goal
+        userImage.image = UIImage(contentsOfFile: filePath!)
+        
 
         // Do any additional setup after loading the view.
     }
