@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TimeLineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
+    let realm = try! Realm()
     
     @IBOutlet var table: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let addData = realm.objects(Add.self)
+        print("全てのデータ\(addData)")
         
         table.dataSource = self
         table.delegate = self
@@ -26,7 +30,8 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-  
+        
+        table.reloadData()
     }
     
 //    @IBAction func photo() {
@@ -34,7 +39,8 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        let addData = realm.objects(Add.self)
+        return addData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
