@@ -30,7 +30,12 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         nameTextField.delegate = self
         goalTextField.delegate = self
         
-        
+        let userData = realm.objects(User.self)
+
+        if userData.count != 0 {
+            self.performSegue(withIdentifier: "toSecond", sender: nil)
+        }
+
         
         // Do any additional setup after loading the view.
     }
@@ -122,6 +127,8 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         textField.resignFirstResponder()
         return true
     }
+    
+  
     
     
 }

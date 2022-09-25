@@ -97,6 +97,7 @@
                         <outlet property="goalTextField" destination="SjR-7H-e1g" id="a2I-6I-nqP"/>
                         <outlet property="nameTextField" destination="YRd-XB-zhP" id="pA8-4s-kRr"/>
                         <outlet property="userImage" destination="bKK-hQ-muS" id="jBk-wM-CV8"/>
+                        <segue destination="jzH-fK-5Iz" kind="show" identifier="toSecond" id="Yx2-6B-Ol1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -259,6 +260,9 @@
             <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Yx2-6B-Ol1"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="timer" catalog="system" width="128" height="121"/>

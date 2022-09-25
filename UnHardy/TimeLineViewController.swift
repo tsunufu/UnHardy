@@ -12,6 +12,8 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
 
     let realm = try! Realm()
     
+    var imageNameArray: [String] = []
+    
     @IBOutlet var table: UITableView!
     @IBOutlet var timeLineImage: UIImageView!
 
@@ -31,6 +33,14 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        let addData = realm.objects(Add.self)
+       
+//        for i in 0...addData.count - 1{
+//            print(addData[i].image)
+//            imageNameArray.append(getFileInDocumentsDirectory(fileName: addData[i].image))
+//            print(imageNameArray)
+//        }
 
         
         table.reloadData()
@@ -59,7 +69,7 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
         
    //     cell.timeLineImage.image = UIImage(named: "Clock")
         cell.testLabel.text = getFileInDocumentsDirectory(fileName: add.image)
-        cell.timeLineImage.image = UIImage(named: getFileInDocumentsDirectory(fileName: add.image))
+        cell.timeLineImage.image = UIImage(contentsOfFile: getFileInDocumentsDirectory(fileName: add.image))
  
         print("作成した", getFileInDocumentsDirectory(fileName: add.image))
         
@@ -80,22 +90,29 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
         return fileURL!.path
     }
     
-    @IBAction func share() {
-        //シェアするテキストを作成
-        let text = "〇〇日継続🔥"
-        let hashTag = "#目標"
-        let advTag = "#UnHardy"
-        let completedText = text + "\n" + hashTag + "\n" + advTag
-
-        //作成したテキストをエンコード
-        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-
-        //エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
-        if let encodedText = encodedText,
-            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
-            UIApplication.shared.open(url)
-        }
+    //保存した画像を表示するためのメソッド
+    func getFileName(exten: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        return dateFormatter.string(from: Date()) + exten
     }
+    
+//    @IBAction func share() {
+//        //シェアするテキストを作成
+//        let text = "〇〇日継続🔥"
+//        let hashTag = "#目標"
+//        let advTag = "#UnHardy"
+//        let completedText = text + "\n" + hashTag + "\n" + advTag
+//
+//        //作成したテキストをエンコード
+//        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//
+//        //エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+//        if let encodedText = encodedText,
+//            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+//            UIApplication.shared.open(url)
+//        }
+//    }
     
 
     /*

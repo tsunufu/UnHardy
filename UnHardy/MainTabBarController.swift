@@ -79,26 +79,21 @@ class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate,
         
         let fileName = "\(NSUUID().uuidString).png"
         add.image = getFileName(exten: fileName)
-        print("kakakar", fileName)
-        
-        
-        //0925chomu
         
         
         //let imageUrl = image?.pngData()
         
-        do {
-            //            try imageUrl!.write(to: documentDirectoryFileURL)
-            let fileName = "\(NSUUID().uuidString).png"
-            add.image = getFileName(exten: fileName)
-            print("kakakar", fileName)
-            //add.image = documentDirectoryFileURL.absoluteString
-            
-        } catch {
-            //エラー処理
-            print("エラー")
-        }
-        
+//        do {
+//            //            try imageUrl!.write(to: documentDirectoryFileURL)
+//            let fileName = "\(NSUUID().uuidString).png"
+//            add.image = getFileName(exten: fileName)
+//            //add.image = documentDirectoryFileURL.absoluteString
+//
+//        } catch {
+//            //エラー処理
+//            print("エラー")
+//        }
+//
         
         
         try! realm.write {
