@@ -11,6 +11,7 @@ import Photos
 
 class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var postImage: UIImageView!
     var image: UIImage?
     var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
@@ -72,50 +73,68 @@ class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate,
     
     //
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+
         dismiss(animated: true, completion: nil)
-        
+
         let add = Add()
-        
+
         let fileName = "\(NSUUID().uuidString).png"
         add.image = getFileName(exten: fileName)
-        
-        
-        //let imageUrl = image?.pngData()
-        
-//        do {
-//            //            try imageUrl!.write(to: documentDirectoryFileURL)
-//            let fileName = "\(NSUUID().uuidString).png"
-//            add.image = getFileName(exten: fileName)
-//            //add.image = documentDirectoryFileURL.absoluteString
-//
-//        } catch {
-//            //エラー処理
-//            print("エラー")
-//        }
-//
-        
-        
+
+
+        let imageUrl = image?.pngData()
+
+        do {
+            //            try imageUrl!.write(to: documentDirectoryFileURL)
+            let fileName = "\(NSUUID().uuidString).png"
+            add.image = getFileName(exten: fileName)
+            //add.image = documentDirectoryFileURL.absoluteString
+
+        } catch {
+            //エラー処理
+            print("エラー")
+        }
+
+
         try! realm.write {
             realm.add(add)
         }
-        
-        
-        
-        
+
     }
+
+//    // 画像を保存するメソッド
+//    func saveImage(image: UIImage) -> String? {
+//        guard let imageData = image.jpegData(compressionQuality: 1.0) else { return nil }
+//        
+//        do {
+//            let fileName = UUID().uuidString + ".jpeg" // ファイル名を決定(UUIDは、ユニークなID)
+//            let imageURL = getImageURL(fileName: fileName) // 保存先のURLをゲット
+//            try imageData.write(to: imageURL) // imageURLに画像を書き込む
+//            return fileName
+//        } catch {
+//            print("Failed to save the image:", error)
+//            return nil
+//        }
+//    }
+//    
+//    // URLを取得するメソッド
+//    func getImageURL(fileName: String) -> URL {
+//        let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        return docDir.appendingPathComponent(fileName)
+//    }
+    
     
     func getFileName(exten: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         return dateFormatter.string(from: Date()) + exten
     }
-    
+
     //保存するためのパスを作成する
     func createLocalDataFile() {
         // 作成するテキストファイルの名前
         let fileName = "\(NSUUID().uuidString).png"
-        
+
         // DocumentディレクトリのfileURLを取得
         if documentDirectoryFileURL != nil {
             // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る

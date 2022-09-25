@@ -119,6 +119,8 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
             }
         }
     
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true)
     }

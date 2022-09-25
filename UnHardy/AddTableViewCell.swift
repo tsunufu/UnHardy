@@ -32,13 +32,13 @@ class AddTableViewCell: UITableViewCell {
         
         let addData = realm.objects(Add.self)
         
-        for i in 0...addData.count {
-            let fileURL = URL(string: addData[i].image)
-            //パス型に変換
-            let filePath = fileURL?.path
-
-            timeLineImage.image = UIImage(contentsOfFile: filePath!)
-        }
+//        for i in 0...addData.count {
+//            let fileURL = URL(string: addData[i].image)
+//            //パス型に変換
+//            let filePath = fileURL?.path
+//
+//            timeLineImage.image = UIImage(contentsOfFile: filePath!)
+//        }
     }
     
     @IBAction func share() {

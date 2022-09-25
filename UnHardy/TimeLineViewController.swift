@@ -7,13 +7,13 @@
 
 import UIKit
 import RealmSwift
+import Photos
 
-class TimeLineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     let realm = try! Realm()
     
     var imageNameArray: [String] = []
-    
     @IBOutlet var table: UITableView!
     @IBOutlet var timeLineImage: UIImageView!
 
@@ -34,13 +34,13 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        let addData = realm.objects(Add.self)
+        let addData = realm.objects(Add.self)
        
-//        for i in 0...addData.count - 1{
-//            print(addData[i].image)
-//            imageNameArray.append(getFileInDocumentsDirectory(fileName: addData[i].image))
-//            print(imageNameArray)
-//        }
+        for i in 0...addData.count - 1{
+            print(addData[i].image)
+            imageNameArray.append(getFileInDocumentsDirectory(fileName: addData[i].image))
+            print(imageNameArray)
+        }
 
         
         table.reloadData()
@@ -61,20 +61,24 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
         let addData = realm.objects(Add.self)
         let add: Add = addData[indexPath.row]
 
-       // let fileURL = URL(string: add.image)
-        //getFileInDocumentsDirectory(fileName: add.image)
-        //パス型に変換
-        //let filePath = fileURL?.path
-       // print("pasu", filePath!)
-        
-   //     cell.timeLineImage.image = UIImage(named: "Clock")
+        let fileURL = URL(string: add.image)
+        getFileInDocumentsDirectory(fileName: add.image)
+//        パス型に変換
+        let filePath = fileURL?.path
+        print("pasu", filePath!)
+//        Asset内の画像は表示される．．．
+//        cell.timeLineImage.image = UIImage(named: "Clock")
         cell.testLabel.text = getFileInDocumentsDirectory(fileName: add.image)
         cell.timeLineImage.image = UIImage(contentsOfFile: getFileInDocumentsDirectory(fileName: add.image))
- 
+
         print("作成した", getFileInDocumentsDirectory(fileName: add.image))
+        
+        
+
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
          return 400
@@ -96,6 +100,9 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         return dateFormatter.string(from: Date()) + exten
     }
+    
+    
+    
     
 //    @IBAction func share() {
 //        //シェアするテキストを作成
