@@ -13,6 +13,7 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
     let realm = try! Realm()
     
     @IBOutlet var table: UITableView!
+    @IBOutlet var timeLineImage: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,8 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
         
         table.dataSource = self
         table.delegate = self
-   
+        table.register(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+
         // Do any additional setup after loading the view.
         
     }
@@ -44,14 +46,39 @@ class TimeLineViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! AddTableViewCell
         
-        return cell!
+        let addData = realm.objects(Add.self)
+        let add: Add = addData[indexPath.row]
+
+       // let fileURL = URL(string: add.image)
+        //getFileInDocumentsDirectory(fileName: add.image)
+        //パス型に変換
+        //let filePath = fileURL?.path
+       // print("pasu", filePath!)
+        
+   //     cell.timeLineImage.image = UIImage(named: "Clock")
+        cell.testLabel.text = getFileInDocumentsDirectory(fileName: add.image)
+        cell.timeLineImage.image = UIImage(named: getFileInDocumentsDirectory(fileName: add.image))
+ 
+        print("作成した", getFileInDocumentsDirectory(fileName: add.image))
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
          return 400
      }
+    func getDocumentsURL() -> NSURL {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+        return documentsURL
+    }
+    //保存してあるurlからpathを毎回生成する
+    func getFileInDocumentsDirectory(fileName: String) -> String {
+        
+        let fileURL = getDocumentsURL().appendingPathComponent(fileName)
+        return fileURL!.path
+    }
     
     @IBAction func share() {
         //シェアするテキストを作成

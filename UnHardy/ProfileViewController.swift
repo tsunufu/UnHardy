@@ -24,12 +24,12 @@ class ProfileViewController: UIViewController {
         let userData = realm.objects(User.self)
         print("全てのデータ\(userData)")
         //URL型にキャスト
-        let fileURL = URL(string: userData[8].icon)
+        let fileURL = URL(string: userData[1].icon)
         //パス型に変換
         let filePath = fileURL?.path
         
-        userName.text = userData[8].name
-        goalText.text = userData[8].goal
+        userName.text = userData[1].name
+        goalText.text = userData[1].goal
         userImage.image = UIImage(contentsOfFile: filePath!)
         
 
