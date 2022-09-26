@@ -200,6 +200,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="goalText" destination="wjP-xT-xRm" id="Ret-uQ-mbM"/>
+                        <outlet property="keizokuText" destination="LJu-ib-IVd" id="A7y-zO-dol"/>
                         <outlet property="userImage" destination="Tim-Kf-jWW" id="dde-rx-Ves"/>
                         <outlet property="userName" destination="nHT-Hl-Xtx" id="n11-fu-pzg"/>
                     </connections>

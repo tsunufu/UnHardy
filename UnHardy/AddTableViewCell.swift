@@ -12,6 +12,7 @@ class AddTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLineImage: UIImageView!
     @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var keizokuLabel: UILabel!
     
     let realm = try! Realm()
 
@@ -42,9 +43,13 @@ class AddTableViewCell: UITableViewCell {
     }
     
     @IBAction func share() {
+        let addData = realm.objects(Add.self)
+        let userData = realm.objects(User.self)
         //シェアするテキストを作成
-        let text = "〇〇日継続🔥"
-        let hashTag = "#目標"
+        //継続日数をテーブルの数で取得
+        let text = "\(addData.count)日継続🔥"
+        //目標はuserData[0]に格納されてる
+        let hashTag = "#\(userData[0].goal)"
         let advTag = "#UnHardy"
         let completedText = text + "\n" + hashTag + "\n" + advTag
 

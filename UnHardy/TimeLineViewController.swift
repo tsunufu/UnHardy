@@ -26,6 +26,7 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
 
         // Do any additional setup after loading the view.
         
@@ -59,7 +60,8 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! AddTableViewCell
         
         let addData = realm.objects(Add.self)
-        let add: Add = addData[indexPath.row]
+        //上に最新のものが並ぶように工夫
+        let add: Add = addData[addData.count - indexPath.row - 1]
 
         let fileURL = URL(string: add.image)
         getFileInDocumentsDirectory(fileName: add.image)
@@ -70,6 +72,9 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
 //        cell.timeLineImage.image = UIImage(named: "Clock")
 //        cell.testLabel.text = getFileInDocumentsDirectory(fileName: add.image)
         cell.timeLineImage.image = UIImage(contentsOfFile: getFileInDocumentsDirectory(fileName: add.image))
+        //画像がImageViewいっぱいになるように
+        cell.timeLineImage.contentMode = UIView.ContentMode.scaleAspectFill
+        cell.keizokuLabel.text = "\(addData.count - indexPath.row)日継続中🔥"
         
 
         print("作成した", getFileInDocumentsDirectory(fileName: add.image))
@@ -82,7 +87,7 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return 400
+         return 305
      }
     func getDocumentsURL() -> NSURL {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL

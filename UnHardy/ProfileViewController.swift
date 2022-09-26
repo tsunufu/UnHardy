@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
     @IBOutlet var goalText: UILabel!
+    @IBOutlet var keizokuText: UILabel!
     
 
 
@@ -22,6 +23,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         let userData = realm.objects(User.self)
+        let addData = realm.objects(Add.self)
         print("全てのデータ\(userData)")
         //URL型にキャスト
         let fileURL = URL(string: userData[0].icon)
@@ -30,7 +32,9 @@ class ProfileViewController: UIViewController {
         
         userName.text = userData[0].name
         goalText.text = userData[0].goal
+        keizokuText.text = "\(addData.count)日継続中！"
         userImage.image = UIImage(contentsOfFile: filePath!)
+        userImage.contentMode = UIView.ContentMode.scaleAspectFill
         userImage.circle()
         
 
