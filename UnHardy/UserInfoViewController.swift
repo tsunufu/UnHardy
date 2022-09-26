@@ -98,7 +98,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             userImage.image = selectedImage
-            
+            userImage.circle()
             createLocalDataFile()
             image = selectedImage
         }
@@ -135,7 +135,34 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     
 }
 
+extension UIImage {
+    func saveToDocuments(filename:String){
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentsDirectory.appendingPathComponent(filename)
+        if let data = self.jpegData(compressionQuality: 1.0) {
+            do {
+                try data.write(to: fileURL)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    static func getFromDocuments(filename: String) -> UIImage {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let data = try! Data(contentsOf: documentsDirectory.appendingPathComponent(filename))
+        let image = UIImage(data: data)
+        return image!
+    }
+}
 
+extension UIImageView {
+
+    func circle() {
+        layer.masksToBounds = false
+        layer.cornerRadius = frame.width/2
+        clipsToBounds = true
+    }
+}
 
 
 

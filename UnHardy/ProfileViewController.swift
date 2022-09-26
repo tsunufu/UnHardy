@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController {
         userName.text = userData[0].name
         goalText.text = userData[0].goal
         userImage.image = UIImage(contentsOfFile: filePath!)
+        userImage.circle()
         
 
         // Do any additional setup after loading the view.

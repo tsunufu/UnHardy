@@ -9,36 +9,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="374" id="KGk-i7-Jjw" customClass="AddTableViewCell" customModule="UnHardy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="303" id="KGk-i7-Jjw" customClass="AddTableViewCell" customModule="UnHardy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="303"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="303"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5S-4Z-2ZA">
-                        <rect key="frame" x="56" y="55" width="201" height="123"/>
+                        <rect key="frame" x="60" y="34" width="264" height="191"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXO-wl-3K3">
-                        <rect key="frame" x="56" y="195" width="201" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xg-55-NRe">
-                        <rect key="frame" x="56" y="236" width="124" height="21"/>
+                        <rect key="frame" x="34" y="242" width="124" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYP-oy-nk2">
-                        <rect key="frame" x="234" y="234" width="33" height="25"/>
+                        <rect key="frame" x="291" y="240" width="33" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="Twitter"/>
+                        <buttonConfiguration key="configuration" style="plain" image="Twitter" title=""/>
                         <connections>
                             <action selector="share" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qZr-vG-UKI"/>
                         </connections>
@@ -47,10 +41,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="testLabel" destination="SXO-wl-3K3" id="yg8-7n-8gf"/>
                 <outlet property="timeLineImage" destination="W5S-4Z-2ZA" id="p4v-0V-MkK"/>
             </connections>
-            <point key="canvasLocation" x="134.78260869565219" y="109.82142857142857"/>
+            <point key="canvasLocation" x="181.15942028985509" y="86.049107142857139"/>
         </tableViewCell>
     </objects>
     <resources>

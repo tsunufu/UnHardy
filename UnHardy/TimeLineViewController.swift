@@ -36,11 +36,11 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let addData = realm.objects(Add.self)
        
-        for i in 0...addData.count - 1{
-            print(addData[i].image)
-            imageNameArray.append(getFileInDocumentsDirectory(fileName: addData[i].image))
-            print(imageNameArray)
-        }
+//        for i in 0...addData.count - 1{
+//            print(addData[i].image)
+//            imageNameArray.append(getFileInDocumentsDirectory(fileName: addData[i].image))
+//            print(imageNameArray)
+//        }
 
         
         table.reloadData()
@@ -68,8 +68,9 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
         print("pasu", filePath!)
 //        Asset内の画像は表示される．．．
 //        cell.timeLineImage.image = UIImage(named: "Clock")
-        cell.testLabel.text = getFileInDocumentsDirectory(fileName: add.image)
+//        cell.testLabel.text = getFileInDocumentsDirectory(fileName: add.image)
         cell.timeLineImage.image = UIImage(contentsOfFile: getFileInDocumentsDirectory(fileName: add.image))
+        
 
         print("作成した", getFileInDocumentsDirectory(fileName: add.image))
         
@@ -104,6 +105,8 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    
+    
 //    @IBAction func share() {
 //        //シェアするテキストを作成
 //        let text = "〇〇日継続🔥"
@@ -133,3 +136,4 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
     */
 
 }
+
