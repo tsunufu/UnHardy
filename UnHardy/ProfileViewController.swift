@@ -26,21 +26,34 @@ class ProfileViewController: UIViewController {
         let userData = realm.objects(User.self)
         let addData = realm.objects(Add.self)
         print("全てのデータ\(userData)")
-        //URL型にキャスト
+        //URL型にキャスト(ここは不要そう)
         let fileURL = URL(string: userData[0].icon)
-        //パス型に変換
+        getFileInDocumentsDirectory(fileName: userData[0].icon)
+        //パス型に変換(ここは不要そう)
         let filePath = fileURL?.path
         
         userName.text = userData[0].name
         goalText.text = userData[0].goal
         keizokuText.text = "\(addData.count)日継続中！"
-        userImage.image = UIImage(contentsOfFile: filePath!)
+        userImage.image = UIImage(contentsOfFile: getFileInDocumentsDirectory(fileName: userData[0].icon))
         userImage.contentMode = UIView.ContentMode.scaleAspectFill
         userImage.circle()
         obakeText.text = "\(addData.count + 1)日目も頑張ろう！"
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func getDocumentsURL() -> NSURL {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+        return documentsURL
+    }
+    
+    //保存してあるurlからpathを毎回生成する
+    func getFileInDocumentsDirectory(fileName: String) -> String {
+        
+        let fileURL = getDocumentsURL().appendingPathComponent(fileName)
+        return fileURL!.path
     }
     
 

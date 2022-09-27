@@ -53,18 +53,20 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         user.name = self.nameTextField.text!
         user.goal = self.goalTextField.text!
         
-        let imageUrl = image?.pngData()
+//        let imageUrl = image?.pngData()
         
-        do {
-            try imageUrl!.write(to: documentDirectoryFileURL)
-            user.icon = documentDirectoryFileURL.absoluteString
-
-        } catch {
-            //エラー処理
-            print("エラー")
-        }
+//        do {
+//            try imageUrl!.write(to: documentDirectoryFileURL)
+//            user.icon = documentDirectoryFileURL.absoluteString
+//
+//        } catch {
+//            //エラー処理
+//            print("エラー")
+//        }
         
+        let tekenPhoto = saveImage(image: image!)
         
+        user.icon = tekenPhoto!
         
         try! realm.write {
             realm.add(user)
@@ -100,25 +102,25 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
             userImage.image = selectedImage
             userImage.contentMode = UIView.ContentMode.scaleAspectFill
             userImage.circle()
-            createLocalDataFile()
+//            createLocalDataFile()
             image = selectedImage
         }
         self.dismiss(animated: true)
     }
     
     //保存するためのパスを作成する
-        func createLocalDataFile() {
-            // 作成するテキストファイルの名前
-            let fileName = "\(NSUUID().uuidString).png"
-
-            // DocumentディレクトリのfileURLを取得
-            if documentDirectoryFileURL != nil {
-                // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-                let path = documentDirectoryFileURL.appendingPathComponent(fileName)
-                documentDirectoryFileURL = path
-                print(documentDirectoryFileURL)
-            }
-        }
+//        func createLocalDataFile() {
+//            // 作成するテキストファイルの名前
+//            let fileName = "\(NSUUID().uuidString).png"
+//
+//            // DocumentディレクトリのfileURLを取得
+//            if documentDirectoryFileURL != nil {
+//                // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+//                let path = documentDirectoryFileURL.appendingPathComponent(fileName)
+//                documentDirectoryFileURL = path
+//                print(documentDirectoryFileURL)
+//            }
+//        }
     
     
     
