@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var userName: UILabel!
     @IBOutlet var goalText: UILabel!
     @IBOutlet var keizokuText: UILabel!
+    @IBOutlet var obakeText: UILabel!
     
 
 
@@ -36,6 +37,7 @@ class ProfileViewController: UIViewController {
         userImage.image = UIImage(contentsOfFile: filePath!)
         userImage.contentMode = UIView.ContentMode.scaleAspectFill
         userImage.circle()
+        obakeText.text = "\(addData.count + 1)日目も頑張ろう！"
         
 
         // Do any additional setup after loading the view.

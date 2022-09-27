@@ -162,28 +162,50 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tim-Kf-jWW">
-                                        <rect key="frame" x="153" y="140" width="108" height="108"/>
+                                        <rect key="frame" x="152" y="155" width="108" height="108"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ユーザー名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHT-Hl-Xtx">
-                                        <rect key="frame" x="162" y="277" width="90" height="27"/>
+                                        <rect key="frame" x="161" y="292" width="90" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="○月○日までに〇〇に合格する！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjP-xT-xRm">
-                                        <rect key="frame" x="72" y="328" width="270" height="27"/>
+                                        <rect key="frame" x="72" y="343" width="270" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="○日継続中！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJu-ib-IVd">
-                                        <rect key="frame" x="153" y="381" width="108" height="27"/>
+                                        <rect key="frame" x="152" y="396" width="108" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohst" translatesAutoresizingMaskIntoConstraints="NO" id="VF1-x4-Gch">
+                                        <rect key="frame" x="240" y="625" width="123" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hukidashi" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-Vg-BU1">
+                                        <rect key="frame" x="104" y="511" width="284" height="127"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="お帰りなさい！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eH6-GM-zl1">
+                                        <rect key="frame" x="201" y="530" width="91" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="○日目も頑張ろう！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YB0-GW-hth">
+                                        <rect key="frame" x="171" y="571" width="150" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -201,13 +223,14 @@
                     <connections>
                         <outlet property="goalText" destination="wjP-xT-xRm" id="Ret-uQ-mbM"/>
                         <outlet property="keizokuText" destination="LJu-ib-IVd" id="A7y-zO-dol"/>
+                        <outlet property="obakeText" destination="YB0-GW-hth" id="D02-Xd-J0h"/>
                         <outlet property="userImage" destination="Tim-Kf-jWW" id="dde-rx-Ves"/>
                         <outlet property="userName" destination="nHT-Hl-Xtx" id="n11-fu-pzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtN-wa-by4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2704" y="-247"/>
+            <point key="canvasLocation" x="2702.898550724638" y="-247.09821428571428"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="JJ7-cG-4ig">
@@ -265,7 +288,9 @@
         <segue reference="Yx2-6B-Ol1"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="gohst" width="109" height="109"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="hukidashi" width="151" height="136"/>
         <image name="timer" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
