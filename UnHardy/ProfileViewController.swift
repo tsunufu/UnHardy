@@ -26,12 +26,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let content = UNMutableNotificationContent()
-        content.title = "ここに通知のタイトル"
-        content.body = "ここに通知の本文"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
         
         let userData = realm.objects(User.self)
         let addData = realm.objects(Add.self)

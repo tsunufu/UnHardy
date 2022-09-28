@@ -86,6 +86,13 @@ class MainTabBarController: UITabBarController, UIImagePickerControllerDelegate,
         try! realm.write {
           realm.add(add)
         }
+          
+          let content = UNMutableNotificationContent()
+          content.title = "UnHardy"
+          content.body = "今日の投稿がまだありません！いますぐ投稿しましょう"
+          let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 72000, repeats: false)
+          let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+          UNUserNotificationCenter.current().add(request)
          
       }
        
