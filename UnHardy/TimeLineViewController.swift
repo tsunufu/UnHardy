@@ -74,6 +74,10 @@ class TimeLineViewController: UIViewController, UIImagePickerControllerDelegate,
         cell.timeLineImage.image = UIImage(contentsOfFile: getFileInDocumentsDirectory(fileName: add.image))
         //画像がImageViewいっぱいになるように
         cell.timeLineImage.contentMode = UIView.ContentMode.scaleAspectFill
+        
+        // 角丸にする
+        cell.timeLineImage.layer.cornerRadius = cell.timeLineImage.frame.size.width * 0.05
+        cell.timeLineImage.clipsToBounds = true
         cell.keizokuLabel.text = "\(addData.count - indexPath.row)日継続中🔥"
         
 

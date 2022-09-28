@@ -11,6 +11,9 @@ import RealmSwift
 class ProfileViewController: UIViewController {
     
     let realm = try! Realm()
+    // userdefaultsを用意しておく
+    let UD = UserDefaults.standard
+
     
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
@@ -22,6 +25,13 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "ここに通知のタイトル"
+        content.body = "ここに通知の本文"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
         
         let userData = realm.objects(User.self)
         let addData = realm.objects(Add.self)
@@ -44,6 +54,19 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //日付表示テスト
+        let dt = Date()
+        let dateFormatter = DateFormatter()
+
+        // DateFormatter を使用して書式とロケールを指定する
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMdHms", options: 0, locale: Locale(identifier: "ja_JP"))
+
+        print(dateFormatter.string(from: dt))
+        
+    }
+    
     func getDocumentsURL() -> NSURL {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
         return documentsURL
@@ -56,6 +79,45 @@ class ProfileViewController: UIViewController {
         return fileURL!.path
     }
     
+    //日付判定関数
+    func judgeDate(){
+        //現在のカレンダ情報を設定
+        let calender = Calendar.current
+        //日本時間を設定
+        let now_day = Date(timeIntervalSinceNow: 60 * 60 * 9)
+        //日付判定結果
+        var judge = Bool()
+
+        // 日時経過チェック
+        if UD.object(forKey: "today") != nil {
+             let past_day = UD.object(forKey: "today") as! Date
+             let now = calender.component(.day, from: now_day)
+             let past = calender.component(.day, from: past_day)
+
+             //日にちが変わっていた場合
+             if now != past {
+                judge = true
+             }
+             else {
+                judge = false
+             }
+         }
+         //初回実行のみelse
+         else {
+             judge = true
+             /* 今の日時を保存 */
+             UD.set(now_day, forKey: "today")
+         }
+
+         /* 日付が変わった場合はtrueの処理 */
+         if judge == true {
+              judge = false
+             //日付が変わった場合の処理をここに書く
+         }
+         else {
+          //日付が変わっていない時の処理をここに書く
+         }
+    }
 
     /*
     // MARK: - Navigation

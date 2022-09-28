@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             deleteRealmIfMigrationNeeded: true)
         Realm.Configuration.defaultConfiguration = config
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, _) in
+            if granted {
+                UNUserNotificationCenter.current().delegate = self
+            }
+        }
+        
         return true
     }
 
@@ -42,5 +48,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            if #available(iOS 14.0, *) {
+                completionHandler([[.banner, .list, .sound]])
+            } else {
+                completionHandler([[.alert, .sound]])
+            }
+        }
 }
 
